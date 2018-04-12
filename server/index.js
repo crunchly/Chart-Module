@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
@@ -6,6 +7,6 @@ const app = express();
 app.use(morgan('tiny'));
 
 // Static
-app.get('/', (req, res) => res.send('Hello World!'));
+app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
-app.listen(3000, () => console.log('server listening on port 3001...'));
+app.listen(3001, () => console.log('server listening on port 3001...'));
