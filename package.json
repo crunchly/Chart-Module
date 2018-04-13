@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "webpack": "webpack -d --watch",
-    "lint": "eslint ./",
+    "lint": "eslint ./ --ext .jsx --ext .js",
     "test": "jest"
   },
   "dependencies": {
