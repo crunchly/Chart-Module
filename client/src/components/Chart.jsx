@@ -1,5 +1,11 @@
-const ChartModule = (props) => {
-  return <div></div>;
+import React from 'react';
+
+const Chart = (props) => {
+  return (
+    <div>
+      hello~
+    </div>
+  );
 };
 
-export default ChartModule;
+export default Chart;
