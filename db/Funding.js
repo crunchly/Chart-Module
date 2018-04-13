@@ -43,6 +43,6 @@ const typeByAmount = company => (
   ])
 );
 
-module.exports.model = model;
+module.exports.model = Funding;
 module.exports.typeByAmount = typeByAmount;
 
