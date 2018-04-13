@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('./db.js');
-const { Funding } = require('./Funding.js');
+const Funding = require('./Funding.js').model;
 
 fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
   const fundings = [];
