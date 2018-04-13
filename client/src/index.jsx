@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Chart from './components/Chart.jsx';
+import ChartModule from './components/ChartModule.jsx';
 
-ReactDOM.render(<Chart />, document.getElementById('app'));
-console.log('hello');
+ReactDOM.render(<ChartModule />, document.getElementById('app'));
