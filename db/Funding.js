@@ -28,8 +28,8 @@ const fundingSchema = mongoose.Schema({
 
 const Funding = connection.model('Funding', fundingSchema);
 
-const typeByAmount = company => (
-  Funding.aggregate([
+const typeByAmount = (company, model = Funding) => (
+  model.aggregate([
     {
       $match: { company },
     },
@@ -38,6 +38,9 @@ const typeByAmount = company => (
         _id: { funding_round_type: '$funding_round_type' },
         totalAmt: { $sum: '$raised_amount_usd' },
       },
+    },
+    {
+      $sort: { _id: 1 },
     },
   ])
 );
