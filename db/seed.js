@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const db = require('./db.js');
+const mongoose = require('mongoose');
 const Funding = require('./Funding.js');
 
 fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
@@ -26,7 +26,7 @@ fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
 
   Funding.model.create(fundings, () => {
     process.stdout.write('\ndone\n');
-    db.close();
+    mongoose.disconnect();
     process.exit();
   });
 });
