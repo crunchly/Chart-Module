@@ -91,10 +91,11 @@ describe('Funding Model', () => {
   });
 
   test('typeByAmount should return a list of funding_round_type with summed raised_amount_usd', () => {
-    return Funding.typeByAmount('Facebook')
+    return Funding.typeByAmount('Facebook', fundingModel)
       .then((data) => {
-        expect(data[0]._id.funding_round_type).toBe('series-b');
-        expect(data[0].totalAmt).toBe(27500000);
+        console.log(data);
+        expect(data[0]._id.funding_round_type).toBe('angel');
+        expect(data[0].totalAmt).toBe(500000);
       });
   });
 });
