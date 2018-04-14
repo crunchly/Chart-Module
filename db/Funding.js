@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/front_end_capstone');
+const connection = require('./db.js');
 
 const fundingSchema = mongoose.Schema({
   _id: Number,
@@ -27,7 +26,7 @@ const fundingSchema = mongoose.Schema({
   company: String,
 });
 
-const Funding = mongoose.model('Funding', fundingSchema);
+const Funding = connection.model('Funding', fundingSchema);
 
 const typeByAmount = company => (
   Funding.aggregate([
@@ -44,5 +43,6 @@ const typeByAmount = company => (
 );
 
 module.exports.model = Funding;
+module.exports.schema = fundingSchema;
 module.exports.typeByAmount = typeByAmount;
 

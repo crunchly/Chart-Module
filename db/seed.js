@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('./db.js');
-const Funding = require('./Funding.js').model;
+const Funding = require('./Funding.js');
 
 fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
   const fundings = [];
@@ -20,11 +20,11 @@ fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
 
     process.stdout.write(`Loading ${round._id} \r`);
 
-    const funding = new Funding(round);
+    const funding = new Funding.model(round);
     fundings.push(funding);
   });
 
-  Funding.create(fundings, () => {
+  Funding.model.create(fundings, () => {
     process.stdout.write('\ndone\n');
     db.close();
     process.exit();
