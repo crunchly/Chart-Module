@@ -93,7 +93,6 @@ describe('Funding Model', () => {
   test('typeByAmount should return a list of funding_round_type with summed raised_amount_usd', () => {
     return Funding.typeByAmount('Facebook', fundingModel)
       .then((data) => {
-        console.log(data);
         expect(data[0]._id.funding_round_type).toBe('angel');
         expect(data[0].totalAmt).toBe(500000);
       });
