@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const Funding = require('../db/Funding.js');
 
 const app = express();
 
@@ -8,8 +9,11 @@ const app = express();
 app.use(morgan('tiny'));
 
 // Dynamic
-app.get('/funding-rounds/', (req, res) => {
-  res.send('hello!');
+app.get('/funding-rounds/:company', (req, res) => {
+  Funding.typeByAmount(req.params.company)
+    .then((data) => {
+      res.send(data);
+    });
 });
 
 // Static
