@@ -1,30 +1,31 @@
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
-const Funding = require('./Funding.js');
+const funding = require('./Funding.js');
 
 fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
   const fundings = [];
 
-  data = JSON.parse(data.toString());
-  data.slice(0, 200).forEach((round) => {
-    round.company = round.name;
-    round._id = round.funding_round_id;
-    delete round.name;
-    delete round.funding_round_id;
-    delete round.object_id;
+  const parsedData = JSON.parse(data.toString());
+  parsedData.slice(0, 200).forEach((round) => {
+    const modRound = { ...round };
+    modRound.company = round.name;
+    modRound._id = round.funding_round_id;
+    delete modRound.name;
+    delete modRound.funding_round_id;
+    delete modRound.object_id;
 
-    Object.keys(round).forEach((key) => {
-      round[key] = round[key] === 'NULL' ? '' : round[key];
+    Object.keys(modRound).forEach((key) => {
+      modRound[key] = modRound[key] === 'NULL' ? '' : modRound[key];
     });
 
-    process.stdout.write(`Loading ${round._id} \r`);
+    process.stdout.write(`Loading ${modRound._id} \r`);
 
-    const funding = new Funding.model(round);
-    fundings.push(funding);
+    const newFunding = new funding.Model(modRound);
+    fundings.push(newFunding);
   });
 
-  Funding.model.create(fundings, () => {
+  funding.Model.create(fundings, () => {
     process.stdout.write('\ndone\n');
     mongoose.disconnect();
     process.exit();

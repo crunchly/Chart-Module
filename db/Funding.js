@@ -45,7 +45,7 @@ const typeByAmount = (company, model = Funding) => (
   ])
 );
 
-module.exports.model = Funding;
+module.exports.Model = Funding;
 module.exports.schema = fundingSchema;
 module.exports.typeByAmount = typeByAmount;
 
