@@ -43,9 +43,21 @@ class ChartModule extends React.Component {
               display: false,
             },
             scales: {
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Funding Type',
+                },
+              }],
               yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Money Raised in USD',
+                },
                 ticks: {
-                  beginAtZero: true,
+                  callback: function tickCallBack(value) {
+                    return value === 0 ? '0' : `${(value / 1000000)}M`;
+                  },
                 },
               }],
             },

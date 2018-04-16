@@ -7,7 +7,7 @@ fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
   const fundings = [];
 
   const parsedData = JSON.parse(data.toString());
-  parsedData.slice(0, 200).forEach((round) => {
+  parsedData.slice(0, 1000).forEach((round) => {
     const modRound = { ...round };
     modRound.company = round.name;
     modRound._id = round.funding_round_id;
