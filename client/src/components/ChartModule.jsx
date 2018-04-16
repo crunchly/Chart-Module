@@ -29,8 +29,8 @@ class ChartModule extends React.Component {
             labels: data.map(funding => formatTypes(funding._id.funding_round_type)),
             datasets: [{
               data: data.map(funding => funding.totalAmt),
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
+              backgroundColor: 'rgba(0, 46, 77, 0.5)',
+              borderColor: 'rgba(0, 46, 77, 1)',
               borderWidth: 1,
             }],
           },
