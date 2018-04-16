@@ -8,7 +8,7 @@ body {
   padding: 20px;
 }
 
-.module {
+.chart-module {
   padding-bottom: 8px;
   background: #fff;
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -17,7 +17,7 @@ body {
   color: rgba(0,0,0,.87);
 }
 
-.module:before {
+.chart-module:before {
   content: "";
   display: block;
   height: 5px;
@@ -25,7 +25,7 @@ body {
   border-radius: 2px 2px 0 0;
 }
 
-.module__icon {
+.chart-module__icon {
   display: inline-block;
   margin-right: 8px;
   height: 20px;
@@ -37,7 +37,7 @@ body {
   fill: currentColor;
 }
 
-.module__title {
+.chart-module__title {
   margin: 16px 16px 8px 16px;
   margin-bottom: 8px;
   display: flex;
@@ -45,17 +45,17 @@ body {
   justify-content: space-between;
 }
 
-.module__btn {
+.chart-module__btn {
   margin-left: auto;
   font-weight: 500;
   color: rgb(2, 136, 209);
   cursor: pointer;
 }
 
-.module__btn:hover {
+.chart-module__btn:hover {
   text-decoration: underline;
 }
 
-.module__canvas-wrap--hidden {
+.chart-module__canvas-wrap--hidden {
   display: none;
 }

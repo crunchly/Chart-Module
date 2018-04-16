@@ -15,7 +15,7 @@ const formatTypes = function formatTypeTextIntoDisplayText(type) {
 };
 
 const chartIcon = (
-  <div className="module__icon">
+  <div className="chart-module__icon">
     <svg viewBox="0 0 20 20">
       <path d="M17.78,0H2.22A2.23,2.23,0,0,0,0,2.22V17.78A2.23,2.23,0,0,0,2.22,20H17.78A2.23,2.23,0,0,0,20,17.78V2.22A2.23,2.23,0,0,0,17.78,0Zm0,17.78H15.56V4.44H13.33V17.78H11.11V9H8.89v8.82H6.67V12.35H4.44v5.43H2.22V2.22H17.78Z" />
     </svg>
@@ -109,20 +109,20 @@ class ChartModule extends React.Component {
 
   render() {
     return (
-      <div className="module">
-        <div className="module__title">
+      <div className="chart-module">
+        <div className="chart-module__title">
           {chartIcon}Which funding rounds raised the most money?
           <div
-            className="module__btn"
+            className="chart-module__btn"
             onClick={() => this.handleClick()}
-            onKeyDown={(e) => this.handleKeyDown(e)}
+            onKeyDown={e => this.handleKeyDown(e)}
             role="button"
             tabIndex="0"
           >
             {this.state.hidden ? 'SHOW' : 'HIDE'}
           </div>
         </div>
-        <div className={this.state.hidden ? 'module__canvas-wrap--hidden' : ''}>
+        <div className={this.state.hidden ? 'chart-module__canvas-wrap--hidden' : ''}>
           <canvas ref={this.ref} />
         </div>
       </div>
