@@ -57,6 +57,9 @@ class ChartModule extends React.Component {
                   display: true,
                   labelString: 'Funding Type',
                 },
+                ticks: {
+                  fontColor: 'rgba(153, 153, 153, 1)',
+                },
               }],
               yAxes: [{
                 scaleLabel: {
@@ -67,17 +70,18 @@ class ChartModule extends React.Component {
                   callback: function tickCallBack(value) {
                     return value === 0 ? '0' : `${(value / 1000000)}M`;
                   },
+                  fontColor: 'rgba(153, 153, 153, 1)',
                 },
               }],
             },
             layout: {
               padding: {
-                  left: 16,
-                  right: 16,
-                  top: 0,
-                  bottom: 8,
-              }
-            }
+                left: 16,
+                right: 16,
+                top: 0,
+                bottom: 16,
+              },
+            },
           },
         });
       });
@@ -94,6 +98,7 @@ class ChartModule extends React.Component {
       <div className="module">
         <div className="module__title">
           {chartIcon}Which funding rounds raised the most money?
+          <div className="module__btn">SHOW</div>
         </div>
         <canvas ref={this.ref} />
       </div>
