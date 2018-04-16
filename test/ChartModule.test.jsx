@@ -3,7 +3,9 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ChartModule from '../client/src/components/ChartModule';
 
-const { mount } = Enzyme;
+const { shallow } = Enzyme;
+
+global.fetch = jest.fn(() => new Promise(resolve => resolve()));
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -13,7 +15,7 @@ describe('<ChartModule />', () => {
   });
 
   test('renders canvas', () => {
-    const wrapper = mount(<ChartModule />);
+    const wrapper = shallow(<ChartModule company="Facebook" />);
     const result = wrapper.find('canvas').length;
     expect(result).toBe(1);
   });
