@@ -2,6 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Chart from 'chart.js';
 
+const formatTypes = function formatTypeTextIntoDisplayText(type) {
+  const map = {
+    angel: 'Angel',
+    venture: 'Venture',
+    'series-a': 'Series A',
+    'series-b': 'Series B',
+    'series-c+': 'Series C+',
+    other: 'Other',
+  };
+  return map[type];
+};
+
 class ChartModule extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +26,7 @@ class ChartModule extends React.Component {
         this.chart = new Chart(this.ref.current, {
           type: 'bar',
           data: {
-            labels: data.map(funding => funding._id.funding_round_type),
+            labels: data.map(funding => formatTypes(funding._id.funding_round_type)),
             datasets: [{
               data: data.map(funding => funding.totalAmt),
               backgroundColor: 'rgba(54, 162, 235, 0.2)',
