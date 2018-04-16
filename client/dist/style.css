@@ -1,2 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #eee;
+}
+
 #app {
+  padding: 20px;
+}
+
+.chart-module {
+  padding-bottom: 8px;
+  background: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  font-size: 14px;
+  font-family: Roboto,Helvetica Neue,sans-serif;
+  color: rgba(0,0,0,.87);
+}
+
+.chart-module:before {
+  content: "";
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg,#b28948,#f5dd9e,#b28948);
+  border-radius: 2px 2px 0 0;
+}
+
+.chart-module__icon {
+  display: inline-block;
+  margin-right: 8px;
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  line-height: 20px;
+  color: #0288d1;
+  fill: currentColor;
+}
+
+.chart-module__title {
+  margin: 16px 16px 8px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-module__btn {
+  margin-left: auto;
+  font-weight: 500;
+  color: rgb(2, 136, 209);
+  cursor: pointer;
+}
+
+.chart-module__btn:hover {
+  text-decoration: underline;
+}
+
+.chart-module__canvas-wrap--hidden {
+  display: none;
 }
