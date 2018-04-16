@@ -14,6 +14,14 @@ const formatTypes = function formatTypeTextIntoDisplayText(type) {
   return map[type];
 };
 
+const chartIcon = (
+  <div className="icon">
+    <svg viewBox="0 0 20 20">
+      <path d="M17.78,0H2.22A2.23,2.23,0,0,0,0,2.22V17.78A2.23,2.23,0,0,0,2.22,20H17.78A2.23,2.23,0,0,0,20,17.78V2.22A2.23,2.23,0,0,0,17.78,0Zm0,17.78H15.56V4.44H13.33V17.78H11.11V9H8.89v8.82H6.67V12.35H4.44v5.43H2.22V2.22H17.78Z" />
+    </svg>
+  </div>
+);
+
 class ChartModule extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +46,7 @@ class ChartModule extends React.Component {
             title: {
               display: true,
               text: 'Funding Rounds by Money Raised',
+              fontStyle: 'normal',
             },
             legend: {
               display: false,
@@ -73,7 +82,12 @@ class ChartModule extends React.Component {
   }
 
   render() {
-    return <canvas ref={this.ref} />;
+    return (
+      <div>
+        <div className="title">{chartIcon}Which funding rounds raised the most money?</div>
+        <canvas ref={this.ref} />
+      </div>
+    );
   }
 }
 

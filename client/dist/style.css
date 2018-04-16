@@ -1,2 +1,21 @@
-#app {
+* {
+  font-size: 14px;
+  font-family: Roboto,Helvetica Neue,sans-serif;
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 8px;
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  line-height: 20px;
+  color: #0288d1;
+  fill: currentColor;
+}
+
+.title {
+  display: flex;
+  align-items: center;
 }
