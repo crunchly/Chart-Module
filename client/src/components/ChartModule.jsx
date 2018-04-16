@@ -26,6 +26,10 @@ class ChartModule extends React.Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
+
+    this.state = {
+      hidden: false,
+    };
   }
 
   componentDidMount() {
@@ -79,7 +83,7 @@ class ChartModule extends React.Component {
                 left: 16,
                 right: 16,
                 top: 0,
-                bottom: 16,
+                bottom: 8,
               },
             },
           },
@@ -93,14 +97,34 @@ class ChartModule extends React.Component {
       .then(response => response.json());
   }
 
+  handleClick() {
+    this.setState({ hidden: !this.state.hidden });
+  }
+
+  handleKeyDown(e) {
+    if (e.keyCode === 13) {
+      this.setState({ hidden: !this.state.hidden });
+    }
+  }
+
   render() {
     return (
       <div className="module">
         <div className="module__title">
           {chartIcon}Which funding rounds raised the most money?
-          <div className="module__btn">SHOW</div>
+          <div
+            className="module__btn"
+            onClick={() => this.handleClick()}
+            onKeyDown={(e) => this.handleKeyDown(e)}
+            role="button"
+            tabIndex="0"
+          >
+            {this.state.hidden ? 'SHOW' : 'HIDE'}
+          </div>
         </div>
-        <canvas ref={this.ref} />
+        <div className={this.state.hidden ? 'module__canvas-wrap--hidden' : ''}>
+          <canvas ref={this.ref} />
+        </div>
       </div>
     );
   }
