@@ -14,16 +14,22 @@ class ChartModule extends React.Component {
         this.chart = new Chart(this.ref.current, {
           type: 'bar',
           data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: data.map(funding => funding._id.funding_round_type),
             datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              data: data.map(funding => funding.totalAmt),
               backgroundColor: 'rgba(54, 162, 235, 0.2)',
               borderColor: 'rgba(54, 162, 235, 1)',
               borderWidth: 1,
             }],
           },
           options: {
+            title: {
+              display: true,
+              text: 'Funding Rounds by Money Raised',
+            },
+            legend: {
+              display: false,
+            },
             scales: {
               yAxes: [{
                 ticks: {
