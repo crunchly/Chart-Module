@@ -101,7 +101,7 @@ describe('<ChartModule />', () => {
     expect(result).toBe(1);
   });
 
-  test('handleClick should hide chart div', () => {
+  test('handleClick should toggle hidden state', () => {
     const wrapper = mount(<ChartModule company="Facebook" />);
     wrapper.instance().handleClick();
 
@@ -114,5 +114,14 @@ describe('<ChartModule />', () => {
     const promise = wrapper.instance().fetchData();
 
     return promise.then(data => expect(data).toEqual(sampleData));
+  });
+
+  test('handleKeyDown should add chart-module__canvas-wrap--hidden class to char', () => {
+    const wrapper = mount(<ChartModule company="Facebook" />);
+    wrapper.instance().handleKeyDown({ keyCode: 13 });
+    wrapper.update();
+
+    const result = wrapper.find('.chart-module__canvas-wrap--hidden').length;
+    expect(result).toBe(1);
   });
 });
