@@ -11,7 +11,7 @@
     "start": "nodemon server/index.js --inspect",
     "webpack": "webpack -d --watch",
     "lint": "eslint ./ --ext .jsx --ext .js",
-    "test": "jest --no-cache --coverage --collectCoverageFrom='client/src/**/*.jsx' --collectCoverageFrom='db/*.js' --collectCoverageFrom='server/*.js'",
+    "test": "jest --no-cache",
     "test-inspect": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
   },
   "dependencies": {
@@ -43,5 +43,16 @@
     "supertest": "^3.0.0",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "client/src/**/*.jsx",
+      "db/*.js",
+      "server/*.js",
+      "!db/seed.js",
+      "!client/src/index.jsx",
+      "!server/index.js"
+    ]
   }
 }
