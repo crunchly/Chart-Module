@@ -1,9 +1,4 @@
-import mongoose from 'mongoose';
-import Funding from '../db/Funding';
-
-const fundingModel = mongoose.model('TestFunding', Funding.schema);
-
-const sampleData = [
+module.exports = [
   {
     _id: 2,
     funded_at: '2004-09-01T00:00:00Z',
@@ -77,24 +72,3 @@ const sampleData = [
     company: 'Facebook',
   },
 ];
-
-describe('Funding Model', () => {
-  beforeAll(() => {
-    return fundingModel.create(sampleData);
-  });
-
-  afterAll(() => {
-    return mongoose.connection.dropCollection('testfundings')
-      .then(() => {
-        return mongoose.disconnect();
-      });
-  });
-
-  test('typeByAmount should return a list of funding_round_type with summed raised_amount_usd', () => {
-    return Funding.typeByAmount('Facebook', fundingModel)
-      .then((data) => {
-        expect(data[0]._id.funding_round_type).toBe('angel');
-        expect(data[0].totalAmt).toBe(500000);
-      });
-  });
-});
