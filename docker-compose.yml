@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  chart-module:
+    build: ./
+    depends_on:
+      - 'mongodb'
+    ports:
+      - '3001:3001'
+  mongodb:
+    image: mongo:latest

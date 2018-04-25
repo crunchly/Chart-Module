@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/front_end_capstone');
+mongoose.connect('mongodb://mongodb/front_end_capstone');
 
 module.exports = mongoose.connection;
