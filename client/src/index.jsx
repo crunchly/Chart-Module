@@ -6,6 +6,6 @@ const renderToId = (id) => {
   ReactDOM.render(<ChartModule company="Facebook" />, document.getElementById(id));
 };
 
-renderToId('app');
+renderToId('chart-module');
 
 module.exports = renderToId;
