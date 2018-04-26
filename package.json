@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node server/index.js",
     "start-dev": "nodemon server/index.js --inspect",
-    "webpack": "webpack -d --watch",
+    "webpack-prod": "webpack -p",
+    "webpack-dev": "webpack -d --watch",
     "lint": "eslint ./ --ext .jsx --ext .js",
     "test": "jest --no-cache",
     "test-inspect": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
