@@ -2,16 +2,17 @@ version: '3'
 
 services:
   chart-module:
-    build: ./
+    image: seungprk/chart-module:latest
     depends_on:
       - 'mongodb'
     ports:
-      - '3001:3001'
+      - '80:3001'
 
   seeder:
-    build: ./db
+    image: seungprk/seeder:latest
     depends_on:
-      - 'mongodb'
+      - "mongodb"
 
   mongodb:
     image: mongo:latest
+
