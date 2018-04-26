@@ -1,13 +1,13 @@
 # Project Name
 
-> Project description
+Front-end recreation of crunchbase.com
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/crunchly/Chart-Module
+  - https://github.com/crunchly/Current-Team-Module
+  - https://github.com/crunchly/Overview-Module
+  - https://github.com/crunchly/Funding-Status-Module
 
 ## Table of Contents
 
@@ -17,23 +17,21 @@
 
 ## Usage
 
-> Some usage instructions
+`npm start` to run the server
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Node 8.11.1
 
 ## Development
+
+`npm start-dev` to use nodemon and chrome debugger to run the server
 
 ### Installing Dependencies
 
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
