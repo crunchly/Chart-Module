@@ -7,5 +7,11 @@ services:
       - 'mongodb'
     ports:
       - '3001:3001'
+
+  seeder:
+    build: ./db
+    depends_on:
+      - 'mongodb'
+
   mongodb:
     image: mongo:latest
