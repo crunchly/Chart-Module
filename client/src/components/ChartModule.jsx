@@ -92,7 +92,7 @@ class ChartModule extends React.Component {
   }
 
   fetchData() {
-    const url = `/funding-rounds/${this.props.company}`;
+    const url = `funding-rounds/${this.props.company}`;
     return fetch(url)
       .then(response => response.json());
   }
