@@ -14,6 +14,10 @@ app.get('/funding-rounds/:company', (req, res) => {
   Funding.typeByAmount(req.params.company)
     .then((data) => {
       res.send(data);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(404);
     });
 });
 
