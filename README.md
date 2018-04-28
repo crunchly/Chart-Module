@@ -1,6 +1,6 @@
-# Project Name
+# Chart Module
 
-Front-end recreation of crunchbase.com
+Front-end recreation of the chart module of crunchbase.com
 
 ## Related Projects
 
