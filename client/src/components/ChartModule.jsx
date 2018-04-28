@@ -71,7 +71,7 @@ class ChartModule extends React.Component {
                   labelString: 'Money Raised in USD',
                 },
                 ticks: {
-                  callback: function tickCallBack(value) {
+                  callback: function tickCallback(value) {
                     return value === 0 ? '0' : `${(value / 1000000)}M`;
                   },
                   fontColor: 'rgba(153, 153, 153, 1)',
@@ -84,6 +84,26 @@ class ChartModule extends React.Component {
                 right: 16,
                 top: 0,
                 bottom: 8,
+              },
+            },
+            tooltips: {
+              callbacks: {
+                label: function tipCallback(tooltipItem, barData) {
+                  let label = barData.datasets[tooltipItem.datasetIndex].label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+
+                  let numText;
+                  if (tooltipItem.yLabel >= 100000000) {
+                    numText = Math.round(tooltipItem.yLabel / 1000000);
+                  } else {
+                    numText = Math.round(tooltipItem.yLabel / 100000) / 10;
+                  }
+
+                  label += `Money Raised in USD: ${numText}M`;
+                  return label;
+                },
               },
             },
           },
