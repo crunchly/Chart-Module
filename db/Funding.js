@@ -42,7 +42,14 @@ const typeByAmount = (company, model = Funding) => (
     {
       $sort: { _id: 1 },
     },
-  ])
+  ]).then(data => (
+    new Promise((resolve, reject) => {
+      if (data.length === 0) {
+        reject(new Error('company not found'));
+      }
+      resolve(data);
+    })
+  ))
 );
 
 module.exports.Model = Funding;
