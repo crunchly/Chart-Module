@@ -1,11 +1,23 @@
 const mongoose = require('mongoose');
 
-const attemptConnection = () => (
-  mongoose.connect('mongodb://mongodb/front_end_capstone')
-    .catch(() => mongoose.connect('mongodb://localhost/front_end_capstone'))
-);
+const mongoUri = process.env.NODE_DB || 'mongodb://localhosta/front_end_capstone';
+const maxTries = 3;
+const tryInterval = 1000;
 
-attemptConnection()
-  .catch(() => setTimeout(attemptConnection, 1000));
+let tries = 1;
+const retryOnErr = (err) => {
+  if (tries <= maxTries) {
+    setTimeout(() => {
+      tries += 1;
+      mongoose.connect(mongoUri)
+        .catch(retryOnErr);
+    }, tryInterval);
+  } else {
+    throw err;
+  }
+};
+
+mongoose.connect(mongoUri)
+  .catch(retryOnErr);
 
 module.exports = mongoose.connection;

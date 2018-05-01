@@ -7,7 +7,8 @@ services:
       - 'mongodb'
     ports:
       - '80:3001'
-
+    environment:
+      - NODE_DB=mongodb://mongodb/front_end_capstone
   seeder:
     image: seungprk/seeder:latest
     depends_on:
