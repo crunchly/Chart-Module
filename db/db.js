@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoUri = process.env.NODE_DB || 'mongodb://localhosta/front_end_capstone';
+const mongoUri = process.env.NODE_DB || 'mongodb://localhost/front_end_capstone';
 const maxTries = 3;
 const tryInterval = 1000;
 
