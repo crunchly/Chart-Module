@@ -1,14 +1,12 @@
-const fs = require('fs');
-const path = require('path');
 const mongoose = require('mongoose');
 const funding = require('./Funding.js');
+const data = require('./funding_rounds.json');
 
-fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
-  const fundings = [];
+const fundings = [];
 
-  const parsedData = JSON.parse(data.toString());
-  parsedData.slice(0, 1000).forEach((round) => {
-    const modRound = { ...round };
+data.forEach((round) => {
+  const modRound = { ...round };
+  if (round.funding_round_id !== undefined) {
     modRound.company = round.name;
     modRound._id = round.funding_round_id;
     delete modRound.name;
@@ -23,11 +21,11 @@ fs.readFile(path.join(__dirname, 'funding_rounds.json'), (err, data) => {
 
     const newFunding = new funding.Model(modRound);
     fundings.push(newFunding);
-  });
+  }
+});
 
-  funding.Model.create(fundings, () => {
-    process.stdout.write('\ndone\n');
-    mongoose.disconnect();
-    process.exit();
-  });
+funding.Model.create(fundings, () => {
+  process.stdout.write('\ndone\n');
+  mongoose.disconnect();
+  process.exit();
 });
